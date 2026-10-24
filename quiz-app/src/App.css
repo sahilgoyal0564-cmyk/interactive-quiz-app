@@ -1,0 +1,279 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #172033;
+  background: #f1f5f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc 55%, #eef2ff);
+}
+
+.quiz-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 36px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+.quiz-card h1 {
+  margin-top: 0;
+  color: #1d4ed8;
+  font-size: clamp(26px, 5vw, 34px);
+  text-align: center;
+}
+
+.quiz-card h2 {
+  color: #172033;
+  font-size: clamp(19px, 3vw, 23px);
+  line-height: 1.5;
+}
+
+.quiz-card p {
+  color: #475569;
+  line-height: 1.65;
+}
+
+.quiz-card > p {
+  text-align: center;
+}
+
+.quiz-card > button,
+.next-button,
+.result > button {
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 20px;
+  color: white;
+  background: #2563eb;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.quiz-card > button:hover:not(:disabled),
+.next-button:hover:not(:disabled),
+.result > button:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.progress {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2563eb !important;
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.options .option {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  text-align: left;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.options .option:hover:not(:disabled) {
+  background: #eff6ff;
+  border-color: #60a5fa;
+}
+
+.options .option.selected {
+  background: #dbeafe;
+  border: 2px solid #2563eb;
+  color: #1d4ed8;
+}
+
+.options .option.correct {
+  background: #dcfce7;
+  border: 2px solid #16a34a;
+  color: #166534;
+}
+
+.options .option.wrong {
+  background: #fee2e2;
+  border: 2px solid #dc2626;
+  color: #991b1b;
+}
+
+.options .option:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.correct-text {
+  color: #15803d !important;
+  font-weight: 700;
+}
+
+.wrong-text {
+  color: #b91c1c !important;
+  font-weight: 700;
+}
+
+.next-button {
+  margin-top: 8px;
+}
+
+.result {
+  text-align: center;
+}
+
+.result h3 {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.score-circle {
+  width: 145px;
+  height: 145px;
+  margin: 25px auto;
+  border: 8px solid #2563eb;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.score-circle strong {
+  font-size: 32px;
+  color: #2563eb;
+}
+
+.score-circle span {
+  font-size: 13px;
+  color: #475569;
+}
+
+.review-list {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.review-item {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.review-item p {
+  margin: 8px 0;
+}
+
+.review-correct,
+.review-wrong {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-correct {
+  color: #15803d;
+}
+
+.review-wrong {
+  color: #b91c1c;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 16px 12px;
+    align-items: flex-start;
+  }
+
+  .quiz-card {
+    margin-top: 12px;
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .score-circle {
+    width: 125px;
+    height: 125px;
+  }
+
+  .score-circle strong {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
